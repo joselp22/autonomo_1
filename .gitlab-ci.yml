@@ -39,8 +39,17 @@ test_coverage:
   needs:
     - job: build
       artifacts: true
+  dependencies:
+    - build
+  variables:
+    PYTHONPATH: "$CI_PROJECT_DIR"
   script:
+    - pwd
+    - ls -la
+    - ls -la app || echo "NO EXISTE LA CARPETA APP"
     - source $VENV_PATH/bin/activate
+    - python -c "import sys; print(sys.path)"
+    - python -c "import app; print('APP IMPORTADA OK')"
     - pytest --cov=app --cov-report=term --cov-report=xml tests/
   coverage: '/TOTAL.*\s+(\d+)%/'
   artifacts:
