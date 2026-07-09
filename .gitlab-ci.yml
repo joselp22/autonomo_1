@@ -42,7 +42,11 @@ test_coverage:
   dependencies:
     - build
   variables:
-    PYTHONPATH: "$CI_PROJECT_DIR"
+     PYTHONPATH: "$CI_PROJECT_DIR"
+     POSTGRES_DB: api_productos
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: postgres
+     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/api_productos"
   script:
     - pwd
     - ls -la
