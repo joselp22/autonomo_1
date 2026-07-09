@@ -23,7 +23,7 @@ def home():
     return {"message": "API funcionando correctamente"}
 
 
-@app.get("/productos", response_model=list[schemas.ProductoResponse])
+@app.get("/productosget", response_model=list[schemas.ProductoResponse])
 def listar(db: Session = Depends(get_db)):
     return crud.listar_productos(db)
 
